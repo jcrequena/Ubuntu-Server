@@ -1,4 +1,6 @@
 
+$nameServer="serv-raiz"
+Rename-Computer -NewName $nameServer
 Import-Module ADDSDeployment
 Install-ADDSForest `
 -CreateDnsDelegation:$false `
@@ -13,6 +15,8 @@ Install-ADDSForest `
 -SysvolPath "C:\Windows\SYSVOL" `
 -Force:$true
 
+$nameServer="serv-deleg-1"
+Rename-Computer -NewName $nameServer
 Install-ADDSDomain `
 -NoGlobalCatalog:$false `
 -CreateDnsDelegation:$true `
@@ -30,6 +34,8 @@ Install-ADDSDomain `
 -SysvolPath "C:\Windows\SYSVOL" `
 -Force:$true
 
+$nameServer="serv-deleg-2"
+Rename-Computer -NewName $nameServer
 Install-ADDSDomain `
 -NoGlobalCatalog:$false `
 -CreateDnsDelegation:$true `
