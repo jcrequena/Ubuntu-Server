@@ -1,5 +1,11 @@
 $nameServer="serv-resp"
+$IPAddress = ”192.168.1.1”
+$Prefix = 24
+$Gateway=192.168.1.254
+New-NetIPAddress –IPAddress $IPAddress -DefaultGateway $Gateway -PrefixLength $Prefix -InterfaceIndex (Get-NetAdapter).InterfaceIndex
+
 Rename-Computer -NewName $nameServer
+
 
 Import-Module ServerManager
 Add-WindowsFeature AD-Domain-Services
