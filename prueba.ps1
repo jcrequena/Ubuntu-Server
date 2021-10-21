@@ -1,1 +1,1 @@
-# Chang
+dsquery * parameter
