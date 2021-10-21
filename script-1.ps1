@@ -1,6 +1,11 @@
 
+$IPAddress = ”192.168.1.2”
+$Prefix = 24
+$Gateway=192.168.1.254
+New-NetIPAddress –IPAddress $IPAddress -DefaultGateway $Gateway -PrefixLength $Prefix -InterfaceIndex (Get-NetAdapter).InterfaceIndex
 $nameServer="serv-raiz"
 Rename-Computer -NewName $nameServer
+
 Import-Module ADDSDeployment
 Install-ADDSForest `
 -CreateDnsDelegation:$false `
@@ -15,6 +20,11 @@ Install-ADDSForest `
 -SysvolPath "C:\Windows\SYSVOL" `
 -Force:$true
 
+
+$IPAddress = ”192.168.1.3”
+$Prefix = 24
+$Gateway=192.168.1.254
+New-NetIPAddress –IPAddress $IPAddress -DefaultGateway $Gateway -PrefixLength $Prefix -InterfaceIndex (Get-NetAdapter).InterfaceIndex
 $nameServer="serv-deleg-1"
 Rename-Computer -NewName $nameServer
 Install-ADDSDomain `
@@ -34,6 +44,10 @@ Install-ADDSDomain `
 -SysvolPath "C:\Windows\SYSVOL" `
 -Force:$true
 
+$IPAddress = ”192.168.1.4”
+$Prefix = 24
+$Gateway=192.168.1.254
+New-NetIPAddress –IPAddress $IPAddress -DefaultGateway $Gateway -PrefixLength $Prefix -InterfaceIndex (Get-NetAdapter).InterfaceIndex
 $nameServer="serv-deleg-2"
 Rename-Computer -NewName $nameServer
 Install-ADDSDomain `
